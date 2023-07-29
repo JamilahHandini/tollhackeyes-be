@@ -1,0 +1,8 @@
+
+#Merupakan konfigurasi untuk menentukan kuantitas minimal dan maksimal suatu produk
+#Biasa digunakan sebagai file environment untuk konfigurasi lainnya
+#seperti koneksi database, cloud storage, atau chace datastore
+
+Connection:
+    Path: "toll-wise-driver-firebase-adminsdk-2yj8r-c47a9c2384"
+    DatabaseURL : "https://toll-wise-driver-default-rtdb.firebaseio.com/"
