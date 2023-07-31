@@ -1,9 +1,10 @@
 package main
 
 import (
+
 	"github.com/jamilahhandini/tollhackeyes/config"
-	"github.com/jamilahhandini/tollhackeyes/server"
 	dbf "github.com/jamilahhandini/tollhackeyes/dbf"
+	"github.com/jamilahhandini/tollhackeyes/server"
 )
 
 func main() {

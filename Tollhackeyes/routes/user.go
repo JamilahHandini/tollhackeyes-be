@@ -10,6 +10,7 @@ import (
 func RouteUser(api fiber.Router, conf *config.Config, handler handler.Handler) {
 
 	api.Post("/register", handler.Core.User.Register)
-	//api.Get("/getcontentreviewsummary", middleware.JWTValidator(conf, appLoger), handler.Core.Content.GetContentReview)
+	api.Get("/info_perjalanans", handler.Core.User.GetInfoPerjalanans)
+	
 	
 }

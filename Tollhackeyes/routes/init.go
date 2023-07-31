@@ -13,6 +13,6 @@ func SetupRoutes(app *fiber.App, h handler.Handler, conf *config.Config) {
 	api := app.Group("/api/tollhackeyes")
 
 	//* Core endpoint
-	RouteUser(api.Group("/content"), conf, h)
+	RouteUser(api.Group("/user"), conf, h)
 
 }

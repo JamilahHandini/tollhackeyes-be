@@ -32,6 +32,9 @@ func NewUserRepo(conf *config.Config, fb *firebase.App) UserRepo {
 func (r UserRepo) Register(ctx context.Context, user *data.User) (bool, string) {
 	
 	client, err := r.Database.Database(ctx)
+	if err != nil {
+		return false, "client"
+	}
 
 	ref := client.NewRef("Drivers")
 	

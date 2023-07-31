@@ -12,10 +12,9 @@ import (
   func NewConnection(conf *config.Config) *firebase.App{
 	ctx := context.Background()
 	configFirebase := &firebase.Config{
-		DatabaseURL: conf.Database.DatabaseURL,
+		DatabaseURL: "https://toll-wise-driver-default-rtdb.firebaseio.com/",
 	}
-	// replace this with your service account file location
-	opt := option.WithCredentialsFile(conf.Database.Path) 
+	opt := option.WithCredentialsFile("toll-wise-driver-firebase-adminsdk-2yj8r-d28e54d76b.json")
 	app, err := firebase.NewApp(ctx, configFirebase, opt)
 	if err != nil {
 		log.Fatalln("Error initializing app:", err)

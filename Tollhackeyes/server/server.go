@@ -28,7 +28,6 @@ func Run(conf *config.Config, fb *firebase.App) {
 		BodyLimit:    20 * 1024 * 1024,
 	})
 	
-	
 	repo := repository.NewRepository(conf, fb)
 	usecase := usecase.NewUsecase(repo, conf, fb)
 	handler := handler.NewHandler(usecase, conf, fb)
