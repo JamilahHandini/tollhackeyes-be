@@ -16,7 +16,7 @@ type User struct {
 }
 
 type Perjalanan struct {
-    Diskon           int    `json:"diskon"`
+    Reward           int    `json:"reward"`
     Jarak            int    `json:"jarak"`
     JumlahPenumpang  int    `json:"jumlah_penumpang"`
     StatusPerjalanan bool   `json:"status_perjalanan"`

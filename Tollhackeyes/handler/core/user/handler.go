@@ -140,9 +140,9 @@ func (h UserHandler) GetCurrentJarak(c *fiber.Ctx) error{
 
 	ref := client.NewRef("Drivers/dvr1")
 	// read from user_scores using ref
-	s := &dbscan.Perjalanan{}
-	err = ref.Child("info_perjalanans").OrderByChild("").EqualTo(true).Get(ctx, s)
-		if err != nil {
+	
+	data, errData := ref.Child("info_perjalanans").OrderByChild("status_perjalanan").EqualTo(true).GetOrdered(ctx)
+		if errData != nil {
 			c.Status(400).JSON(fiber.Map{
 				"success": false,
 				"message": err,
@@ -151,7 +151,7 @@ func (h UserHandler) GetCurrentJarak(c *fiber.Ctx) error{
 
 	response := c.Status(200).JSON(fiber.Map{
 		"success": true,
-		"message": s,
+		"message": data,
 	})
 
 	return response
