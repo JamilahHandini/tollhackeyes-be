@@ -34,3 +34,7 @@ type EToll struct {
 	Nomor				string		`json:"nomor"`
 	Saldo				int			`json:"saldo"`
 }
+
+type Pay struct {
+	Tarif int `json:"tarif"`
+}
