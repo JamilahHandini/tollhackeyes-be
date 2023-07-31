@@ -100,8 +100,48 @@ func (h UserHandler) GetInfoPerjalanans(c *fiber.Ctx) error{
 
 	ref := client.NewRef("Drivers/dvr1")
 	// read from user_scores using ref
-	var s dbscan.InfoPerjalanan
-	err = ref.Get(context.TODO(), &s)
+	s := &dbscan.InfoPerjalanan{}
+	err = ref.Child("info_perjalanans").Get(context.Background(), s)
+		if err != nil {
+			c.Status(400).JSON(fiber.Map{
+				"success": false,
+				"message": err,
+			})
+		}
+
+	response := c.Status(200).JSON(fiber.Map{
+		"success": true,
+		"message": s,
+	})
+
+	return response
+}
+
+func (h UserHandler) GetCurrentJarak(c *fiber.Ctx) error{
+
+	dataReqs := new(data.User)
+
+	ctx := context.Background()
+	err := c.BodyParser(dataReqs)
+	if err != nil {
+		c.Status(400).JSON(fiber.Map{
+			"success": false,
+			"message": err,
+		})
+	}
+
+	client, err := h.Database.Database(ctx)
+	if err != nil {
+		c.Status(400).JSON(fiber.Map{
+			"success": false,
+			"message": err,
+		})
+	}
+
+	ref := client.NewRef("Drivers/dvr1")
+	// read from user_scores using ref
+	s := &dbscan.Perjalanan{}
+	err = ref.Child("info_perjalanans").OrderByChild("").EqualTo(true).Get(ctx, s)
 		if err != nil {
 			c.Status(400).JSON(fiber.Map{
 				"success": false,
